@@ -104,14 +104,23 @@ class Deque {
 function solve() {
   const commandsCount = readInt();
   const dequeSize = readInt();
-  const commands = readCommands(commandsCount);
   const deque = new Deque(dequeSize);
+  const commands = readCommands(commandsCount);
 
   for (let i = 0; i < commandsCount; i++) {
-    const [name, value] = commands[i].split(" ");
+    const command = commands[i];
+    let commandName = command;
+    let value = null;
+
+    if (command !== ACTIONS.POP_BACK && command !== ACTIONS.POP_FRONT) {
+      const splittedCommand = command.split(" ");
+
+      commandName = splittedCommand[0];
+      value = splittedCommand[1];
+    }
 
     try {
-      switch (name) {
+      switch (commandName) {
         case ACTIONS.PUSH_FRONT:
           deque.pushFront(Number(value));
           break;
