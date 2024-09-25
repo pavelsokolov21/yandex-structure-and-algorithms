@@ -26,4 +26,4 @@ const matchString = (a, b) => {
   return true;
 };
 
-console.log(matchString("agg", "bcc"));
+console.log(matchString("mxyskaoghi", "qodfrgmslc"));
